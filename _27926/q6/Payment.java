@@ -1,0 +1,43 @@
+package _27926.q6;
+
+public class Payment extends Loan {
+    private double paymentAmount;
+    private String paymentDate;
+
+    public Payment(int id, String createdDate, String updatedDate,
+                   String bankName, String branchCode, String address,
+                   String accountNumber, String accountType, double balance,
+                   String customerName, String email, String phoneNumber,
+                   String transactionId, String transactionType, double amount,
+                   double depositAmount, String depositDate,
+                   double withdrawalAmount, String withdrawalDate,
+                   double loanAmount, double interestRate, double duration,
+                   double paymentAmount, String paymentDate) {
+        super(id, createdDate, updatedDate,
+                bankName, branchCode, address,
+                accountNumber, accountType, balance,
+                customerName, email, phoneNumber,
+                transactionId, transactionType, amount,
+                depositAmount, depositDate,
+                withdrawalAmount, withdrawalDate,
+                loanAmount, interestRate, duration);
+
+        if (paymentAmount <= 0) {
+            throw new BankDataException("Payment amount must be > 0");
+        }
+        if (paymentDate == null || paymentDate.isEmpty()) {
+            throw new BankDataException("Payment date cannot be empty");
+        }
+
+        this.paymentAmount = paymentAmount;
+        this.paymentDate = paymentDate;
+    }
+
+    public double getPaymentAmount() {
+        return paymentAmount;
+    }
+
+    public String getPaymentDate() {
+        return paymentDate;
+    }
+}

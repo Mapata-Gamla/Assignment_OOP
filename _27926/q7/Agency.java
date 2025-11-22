@@ -1,0 +1,38 @@
+package _27926.q7;
+
+public class Agency extends Entity {
+    private String agencyName;
+    private String location;
+    private String phoneNumber;
+
+    public Agency(int id, String createdDate, String updatedDate,
+                  String agencyName, String location, String phoneNumber) {
+        super(id, createdDate, updatedDate);
+
+        if (agencyName == null || agencyName.isEmpty()) {
+            throw new RealEstateDataException("Agency name cannot be empty");
+        }
+        if (location == null || location.isEmpty()) {
+            throw new RealEstateDataException("Location cannot be empty");
+        }
+        if (phoneNumber == null || !phoneNumber.matches("\\d{10}")) {
+            throw new RealEstateDataException("Phone number must be 10 digits");
+        }
+
+        this.agencyName = agencyName;
+        this.location = location;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAgencyName() {
+        return agencyName;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+}
